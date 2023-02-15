@@ -2,6 +2,5 @@
 
 A repository to gather all Data Engineering initiatives.
 
-## Cloud Data Warehouse in AWS
+## Cloud Data Warehouse in AWS (cdw_aws folder)
 
-# dataeng_repo
