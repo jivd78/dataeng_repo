@@ -18,3 +18,10 @@ Is a .cfg extension file that configures the access to a redshift instance by me
 The database, its name, user and password are also present in this file.
 
 #### sql_queries.py
+A python file that gathers all the queries string for every single analysis made to the Sparkify database. In it are queries for dropping, creating, copying from S3 instances, inserting, etc.
+
+#### etl.py
+A python file with a pipeline that creates functions to extract, transform and load information from staging tables to star-schema tables. It imports query strings from sql_queries to perform the ETL operations.
+
+#### create-tables.py
+A python file that presents creation functions for staging tables and star-schema tables. It imports query strings from sql_queries to perform the ETL operations.
