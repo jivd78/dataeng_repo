@@ -4,6 +4,11 @@
 To create a Data Warehouse, using an ETL pipeline that copies staging tables from an S3 instance and builds a star schema from them.
 The database is called Sparkify and its star schema is optimized for performing analytical queries for artists, songs, users and activity monitoring.
 
+### ERD for the Sparkify Database
+
+![image](https://user-images.githubusercontent.com/15125406/219561311-09c96ab0-fb9a-42cf-8eeb-eda77d46d4a6.png)
+
+
 ### Project Structure
 
 ```
