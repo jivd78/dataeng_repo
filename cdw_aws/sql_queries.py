@@ -175,20 +175,25 @@ songplay_table_insert = ("""
         location,
         user_agent
                               )
-    SELECT DISTINCT TIMESTAMP 'epoch' + se.ts/1000 * INTERVAL '1 second',
-           se.userid :: INTEGER,
-           se.level,
-           ss.song_id,
-           ss.artist_id,
-           se.sessionid,
-           se.location,
-           se.useragent
+    SELECT DISTINCT 
+        TIMESTAMP 'epoch' + se.ts/1000 * INTERVAL '1 second',
+        se.userid :: INTEGER,
+        se.level,
+        ss.song_id,
+        ss.artist_id,
+        se.sessionid,
+        se.location,
+        se.useragent
 
     FROM stagingevents se 
     JOIN stagingsongs ss ON (se.song = ss.title 
                              AND se.artist = ss.artist_name)
     
-    WHERE se.page = 'NextSong'
+    WHERE se.page = 'NextSong' 
+        AND se.ts IS NOT NULL
+        AND se.userid IS NOT NULL
+        AND ss.song_id IS NOT NULL
+        AND ss.artist_id IS NOT NULL 
 """)
 
 user_table_insert = ("""
@@ -199,15 +204,17 @@ user_table_insert = ("""
         gender,
         level 
     )
-    SELECT DISTINCT se.userid :: INTEGER,
-           se.firstname,
-           se.lastname,
-           se.gender,
-           se.level
+    SELECT DISTINCT 
+        se.userid :: INTEGER,
+        se.firstname,
+        se.lastname,
+        se.gender,
+        se.level
 
     FROM stagingevents se
 
-    WHERE se.page = 'NextSong'
+    WHERE se.page = 'NextSong' 
+        AND se.userid IS NOT NULL
 """)
 
 song_table_insert = ("""
@@ -218,30 +225,37 @@ song_table_insert = ("""
         year,
         duration 
     )
-    SELECT DISTINCT ss.song_id,
-           ss.title,
-           ss.artist_id,
-           ss.year,
-           ss.duration
+    SELECT DISTINCT 
+        ss.song_id,
+        ss.title,
+        ss.artist_id,
+        ss.year,
+        ss.duration
 
     FROM stagingSongs ss
+
+    WHERE ss.song_id IS NOT NULL 
+        AND artist_id IS NOT NULL
 """)
 
 artist_table_insert = ("""
     INSERT INTO DimArtists(
-        artists_id,
+        artist_id,
         name,
         location,
         latitude,
         longitude 
     )
-    SELECT DISTINCT ss.artist_id,
-           ss.artist_name,
-           ss.artist_location,
-           ss.artist_latitude,
-           ss. artist_longitude
+    SELECT DISTINCT 
+        ss.artist_id,
+        ss.artist_name,
+        ss.artist_location,
+        ss.artist_latitude,
+        ss. artist_longitude
 
     FROM stagingSongs ss
+
+    WHERE ss.artist_id IS NOT NULL
 """)
 
 # https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/
@@ -265,6 +279,8 @@ time_table_insert = ("""
         EXTRACT( DOW FROM f.start_time )
 
     FROM factSongPlays f
+
+    WHERE f.start_time IS NOT NULL
 
 """)
 
@@ -360,11 +376,11 @@ highest_usage_per_song_dow = ("""
 
 create_table_queries = [staging_events_table_create, 
                         staging_songs_table_create, 
-                        songplay_table_create, 
                         user_table_create, 
-                        song_table_create, 
                         artist_table_create, 
-                        time_table_create]
+                        time_table_create,
+                        song_table_create,
+                        songplay_table_create,]
 
 create_staging_table_queries = [staging_events_table_create, 
                                 staging_songs_table_create]
