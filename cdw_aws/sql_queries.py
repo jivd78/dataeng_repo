@@ -62,21 +62,33 @@ staging_songs_table_create = ("""
 
 songplay_table_create = ("""
     CREATE TABLE IF NOT EXISTS factsongplays (
-        songplay_id INTEGER IDENTITY(0,1),
-        start_time  TIMESTAMP,
-        user_id     VARCHAR,
+        songplay_id INTEGER IDENTITY(0,1) PRIMARY KEY,
+        start_time  TIMESTAMP NOT NULL,
+        user_id     VARCHAR NOT NULL,
         level       VARCHAR,
-        song_id     VARCHAR,
-        artist_id   VARCHAR,
+        song_id     VARCHAR NOT NULL,
+        artist_id   VARCHAR NOT NULL,
         session_id  INTEGER,
         location    VARCHAR,
-        user_agent  VARCHAR   
+        user_agent  VARCHAR,
+        CONSTRAINT fk_time
+            FOREIGN KEY (start_time)
+            REFERENCES dimtime (startime),
+        CONSTRAINT fk_user
+            FOREIGN KEY(user_id)
+            REFERENCES dimusers (user_id),
+        CONSTRAINT fk_song
+            FOREIGN KEY (song_id)
+            REFERENCES dimsongs (song_id),
+        CONSTRAINT fk_artist
+            FOREIGN KEY (artist_id)
+            REFERENCES dimartists (artist_id )
     )
 """)
 
 user_table_create = ("""
     CREATE TABLE IF NOT EXISTS dimusers (
-        user_id    INTEGER,
+        user_id    INTEGER NOT NULL PRIMARY KEY,
         first_name VARCHAR,
         last_name  VARCHAR,
         gender     VARCHAR,
@@ -86,17 +98,20 @@ user_table_create = ("""
 
 song_table_create = ("""
     CREATE TABLE IF NOT EXISTS dimsongs (
-        song_id   VARCHAR,
+        song_id   VARCHAR NOT NULL PRIMARY KEY,
         title     VARCHAR,
-        artist_id VARCHAR,
+        artist_id VARCHAR NOT NULL,
         year      INTEGER,
-        duration  DOUBLE PRECISION 
+        duration  DOUBLE PRECISION,
+        CONSTRAINT fk_artist
+            FOREIGN KEY (artist_id)
+            REFERENCES dimartists (artist_id) 
     )
 """)
 
 artist_table_create = ("""
     CREATE TABLE IF NOT EXISTS dimartists (
-        artists_id VARCHAR,
+        artist_id VARCHAR NOT NULL PRIMARY KEY,
         name       VARCHAR,
         location   VARCHAR,
         latitude   DOUBLE PRECISION,
@@ -106,7 +121,7 @@ artist_table_create = ("""
 
 time_table_create = ("""
     CREATE TABLE IF NOT EXISTS dimtime (
-        startime TIMESTAMP,
+        startime TIMESTAMP NOT NULL PRIMARY KEY,
         hour     INTEGER,
         day      INTEGER,
         week     INTEGER,
@@ -160,7 +175,7 @@ songplay_table_insert = ("""
         location,
         user_agent
                               )
-    SELECT TIMESTAMP 'epoch' + se.ts/1000 * INTERVAL '1 second',
+    SELECT DISTINCT TIMESTAMP 'epoch' + se.ts/1000 * INTERVAL '1 second',
            se.userid :: INTEGER,
            se.level,
            ss.song_id,
@@ -184,7 +199,7 @@ user_table_insert = ("""
         gender,
         level 
     )
-    SELECT se.userid :: INTEGER,
+    SELECT DISTINCT se.userid :: INTEGER,
            se.firstname,
            se.lastname,
            se.gender,
@@ -203,7 +218,7 @@ song_table_insert = ("""
         year,
         duration 
     )
-    SELECT ss.song_id,
+    SELECT DISTINCT ss.song_id,
            ss.title,
            ss.artist_id,
            ss.year,
@@ -220,7 +235,7 @@ artist_table_insert = ("""
         latitude,
         longitude 
     )
-    SELECT ss.artist_id,
+    SELECT DISTINCT ss.artist_id,
            ss.artist_name,
            ss.artist_location,
            ss.artist_latitude,
@@ -240,7 +255,7 @@ time_table_insert = ("""
         year,
         weekday
     )
-    SELECT
+    SELECT DISTINCT
         f.start_time,
         EXTRACT( HOUR FROM f.start_time ),
         EXTRACT( DAY FROM f.start_time ),
@@ -336,7 +351,7 @@ highest_usage_per_song_dow = ("""
     FROM factSongPlays fs 
     JOIN DimTime dt ON (dt.startime = fs.start_time) 
     JOIN DimSongs ds ON (ds.song_id = fs.song_id)
-    GROUP BY ds.title, dt.wekday
+    GROUP BY ds.title, dt.weekday
     ORDER BY times_played DESC
     LIMIT 10;
     """)
