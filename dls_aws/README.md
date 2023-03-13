@@ -6,7 +6,7 @@ Using AWS Glue, AWS S3, Python, and Spark, create or generate Python scripts to 
 
 To simulate the data coming from the various sources, you will need to create your own S3 directories for customer_landing, step_trainer_landing, and accelerometer_landing zones, and copy the data there as a starting point.
 
-My particular bucket created at S3 ``` is: s3://stedi-jivd ```
+My particular bucket created at S3 is: ``` s3://stedi-jivd ```
 
 You have decided you want to get a feel for the data you are dealing with in a semi-structured format, so you decide to create two Glue tables for the two landing zones. Share your customer_landing.sql and your accelerometer_landing.sql script in git.
 Query those tables using Athena, and take a screenshot of each one showing the resulting data. Name the screenshots customer_landing(.png,.jpeg, etc.) and accelerometer_landing(.png,.jpeg, etc.).
