@@ -48,6 +48,13 @@ Please see the sql queries `customer_landing_table.sql` and `accelerometer_landi
 
 Screenshot shows a select statement from Athena showing the customer landing data and accelerometer landing data, where the customer landing data has multiple rows where shareWithResearchAsOfDate is blank.
 
+#### customer_landing_table.png
+![customer_landing_table](https://user-images.githubusercontent.com/15125406/224882830-1508bd1c-4961-4a81-abe8-6a1495929d1e.png)
+
+#### accelerometer_landing_table.png
+![accelerometer_landing_table](https://user-images.githubusercontent.com/15125406/224882864-81e79c09-e56d-414e-8ec2-d131e3687e5c.png)
+
+
 ### Trusted Zone
 
 #### Configure Glue Studio to dynamically update a Glue Table schema from JSON data
