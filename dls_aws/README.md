@@ -13,14 +13,21 @@ The structure inside de buckets is as follows:
 
 ``` 
     s3://stedi-jivd
-    |_ customer
-    |  |_ landing
-    |  |_ trusted
-    |  |_ curated
-    |_ accelerometer
-    |   |_ landing
-       |_ trusted
-       |_ curated
+     |_customer
+     |   |_landing
+     |   |_trusted
+     |   |_curated
+     |_accelerometer
+     |   |_landing
+     |   |_trusted
+     |   |_curated
+     |_step_trainer
+     |   |_landing
+     |   |_trusted
+     |   |_curated
+     |_athena
+     |_scripts
+     |_sparkHistoryLogs    
 ```    
 You have decided you want to get a feel for the data you are dealing with in a semi-structured format, so you decide to create two Glue tables for the two landing zones. Share your customer_landing.sql and your accelerometer_landing.sql script in git.
 Query those tables using Athena, and take a screenshot of each one showing the resulting data. Name the screenshots customer_landing(.png,.jpeg, etc.) and accelerometer_landing(.png,.jpeg, etc.).
