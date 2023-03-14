@@ -69,6 +69,9 @@ A screenshot that shows a select * statement from Athena showing the customer la
 ##### Screenshot with customer_landing_table queried to show only trusted data: 
 ![image](https://user-images.githubusercontent.com/15125406/224886493-d9e015e1-6d90-482f-aa6d-9c436e7e108f.png)
 
+I addition, as sugested by reviewers, please observe a new screeshot from `customer_trusted_table` where yields the same results, such as shareWithResearchAsOfDate has no empty or zero values. Pleas note that sql quey has no WHERE clause, which means, glue studio job already filtered the json documents and place them into the s3 bucket. 
+![image](https://user-images.githubusercontent.com/15125406/225041162-859e797f-3e69-4ca7-bde5-8627e53fd73c.png)
+
 #### Join Privacy tables with Glue Jobs
 
 Glue jobs have inner joins that join up with the customer_landing table on the serialnumber field. (customer_landing_to_trusted.py and accelerometer_landing_to_trusted_zone.py )
