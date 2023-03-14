@@ -48,10 +48,10 @@ Please see the sql queries `customer_landing_table.sql` and `accelerometer_landi
 
 Screenshot shows a select statement from Athena showing the customer landing data and accelerometer landing data, where the customer landing data has multiple rows where shareWithResearchAsOfDate is blank.
 
-#### customer_landing_table.png
+##### customer_landing_table.png
 ![customer_landing_table](https://user-images.githubusercontent.com/15125406/224882830-1508bd1c-4961-4a81-abe8-6a1495929d1e.png)
 
-#### accelerometer_landing_table.png
+##### accelerometer_landing_table.png
 ![accelerometer_landing_table](https://user-images.githubusercontent.com/15125406/224882864-81e79c09-e56d-414e-8ec2-d131e3687e5c.png)
 
 
@@ -67,9 +67,14 @@ The `glueContext.create_dynamic_frame.from_options()` is how spark infer the sch
 
 A screenshot that shows a select * statement from Athena showing the customer landing data, where the resulting customer trusted data has no rows where shareWithResearchAsOfDate is blank.
 
+##### Screenshot with customer_landing_table queried to show only trusted data: 
+![image](https://user-images.githubusercontent.com/15125406/224886493-d9e015e1-6d90-482f-aa6d-9c436e7e108f.png)
+
 #### Join Privacy tables with Glue Jobs
 
 Glue jobs have inner joins that join up with the customer_landing table on the serialnumber field. (customer_landing_to_trusted.py and accelerometer_landing_to_trusted_zone.py )
+
+
 
 #### Filter protected PII with Spark in Glue Jobs
 
