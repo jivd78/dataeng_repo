@@ -60,7 +60,6 @@ DropFields_node1678502125219 = DropFields.apply(
         "email",
         "phone",
         "birthday",
-        "serialnumber",
         "registrationdate",
         "lastupdatedate",
         "sharewithpublicasofdate",
