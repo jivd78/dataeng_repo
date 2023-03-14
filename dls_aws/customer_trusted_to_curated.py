@@ -4,6 +4,15 @@ from awsglue.utils import getResolvedOptions
 from pyspark.context import SparkContext
 from awsglue.context import GlueContext
 from awsglue.job import Job
+from awsglue import DynamicFrame
+
+
+def sparkSqlQuery(glueContext, query, mapping, transformation_ctx) -> DynamicFrame:
+    for alias, frame in mapping.items():
+        frame.toDF().createOrReplaceTempView(alias)
+    result = spark.sql(query)
+    return DynamicFrame.fromDF(result, glueContext, transformation_ctx)
+
 
 args = getResolvedOptions(sys.argv, ["JOB_NAME"])
 sc = SparkContext()
@@ -39,9 +48,21 @@ Join_node1678502015554 = Join.apply(
     transformation_ctx="Join_node1678502015554",
 )
 
+# Script generated for node SQL Query
+SqlQuery0 = """
+select * from myDataSource
+where timestamp >= shareWithResearchAsOfDate
+"""
+SQLQuery_node1678806723215 = sparkSqlQuery(
+    glueContext,
+    query=SqlQuery0,
+    mapping={"myDataSource": Join_node1678502015554},
+    transformation_ctx="SQLQuery_node1678806723215",
+)
+
 # Script generated for node Customer_curated_to_s3
 Customer_curated_to_s3_node1678502165619 = glueContext.write_dynamic_frame.from_options(
-    frame=Join_node1678502015554,
+    frame=SQLQuery_node1678806723215,
     connection_type="s3",
     format="json",
     connection_options={
