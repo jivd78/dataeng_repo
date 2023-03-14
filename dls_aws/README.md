@@ -69,7 +69,9 @@ A screenshot that shows a select * statement from Athena showing the customer la
 ##### Screenshot with customer_landing_table queried to show only trusted data: 
 ![image](https://user-images.githubusercontent.com/15125406/224886493-d9e015e1-6d90-482f-aa6d-9c436e7e108f.png)
 
-I addition, as sugested by reviewers, please observe a new screeshot from `customer_trusted_table` where yields the same results, such as shareWithResearchAsOfDate has no empty or zero values. Pleas note that sql quey has no WHERE clause, which means, glue studio job already filtered the json documents and place them into the s3 bucket. 
+I addition, as suggested by reviewers, please observe a new screenshot from `customer_trusted_table` where yields the same results, such as `shareWithResearchAsOfDate` field has no blank values. Please note that the sql query has no WHERE clause, which means glue studio job already filtered the unsecured json documents and place them into the s3 bucket:
+
+##### Screenshot with customer_trusted_table queried: 
 ![image](https://user-images.githubusercontent.com/15125406/225041162-859e797f-3e69-4ca7-bde5-8627e53fd73c.png)
 
 #### Join Privacy tables with Glue Jobs
