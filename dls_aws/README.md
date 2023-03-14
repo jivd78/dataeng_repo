@@ -61,6 +61,8 @@ Screenshot shows a select statement from Athena showing the customer landing dat
 
 Glue Job Python code shows that the option to dynamically infer and update schema is enabled.
 
+The `glueContext.create_dynamic_frame.from_options()` is how spark infer the schema. It can be visualized in all the scripts.
+
 #### Use Athena to query Trusted Glue Tables
 
 A screenshot that shows a select * statement from Athena showing the customer landing data, where the resulting customer trusted data has no rows where shareWithResearchAsOfDate is blank.
