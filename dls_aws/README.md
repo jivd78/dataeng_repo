@@ -85,10 +85,14 @@ Both `customer_landing_to_trusted.py` and `accelerometer_landing_to_trusted.py` 
 
 #### Write a Glue Job to join trusted data
 
-Glue jobs do inner joins with the customer_trusted table. (Customer_trusted_to_curated.py and trainer_trusted_to_curated.py)
+Glue jobs do inner joins with the customer_trusted table. (Customer_trusted_to_curated.py)
 
-Please see the job scripts at `customer_trusted_to_curated.py` and `trainer_trusted_to_curated.py`
+Please see the job scripts at `customer_trusted_to_curated.py`.
 
 #### Write a Glue Job to create curated data
 
 The curated data from the Glue tables is sanitized and only contains only customer data from customer records that agreed to share data, and is joined with the correct accelerometer data.
+
+Please see the job scripts at `machine_learning_curated.py`.
+
+
