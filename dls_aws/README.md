@@ -54,7 +54,6 @@ Screenshot shows a select statement from Athena showing the customer landing dat
 ##### accelerometer_landing_table.png
 ![accelerometer_landing_table](https://user-images.githubusercontent.com/15125406/224882864-81e79c09-e56d-414e-8ec2-d131e3687e5c.png)
 
-
 ### Trusted Zone
 
 #### Configure Glue Studio to dynamically update a Glue Table schema from JSON data
@@ -74,17 +73,21 @@ A screenshot that shows a select * statement from Athena showing the customer la
 
 Glue jobs have inner joins that join up with the customer_landing table on the serialnumber field. (customer_landing_to_trusted.py and accelerometer_landing_to_trusted_zone.py )
 
-
+Both `customer_landing_to_trusted.py` and `accelerometer_landing_to_trusted.py` left the serialnumber field to use for curated tables.
 
 #### Filter protected PII with Spark in Glue Jobs
 
 Glue jobs drop data that doesn’t have data in the sharedWithResearchAsOfDate column (customer_landing_to_trusted.py and accelerometer_landing_to_trusted_zone.py )
+
+Both `customer_landing_to_trusted.py` and `accelerometer_landing_to_trusted.py` drop registers that do not have sharedWithResearchAsOfDate data, since it means they were not authorized for use.
 
 ### Curated Zone
 
 #### Write a Glue Job to join trusted data
 
 Glue jobs do inner joins with the customer_trusted table. (Customer_trusted_to_curated.py and trainer_trusted_to_curated.py)
+
+Please see the job scripts at `customer_trusted_to_curated.py` and `trainer_trusted_to_curated.py`
 
 #### Write a Glue Job to create curated data
 
