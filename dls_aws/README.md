@@ -34,7 +34,8 @@ The structure inside de bucket is as follows:
 
 #### Use Glue Studio to ingest data from an S3 bucket
 
-customer_landing_to_trusted.py and accelerometer_landing_to_trusted_zone.py Glue jobs have a node that connects to S3 bucket for customer and accelerometer landing zones.
+Create scripts for customer_landing_to_trusted.py and accelerometer_landing_to_trusted_zone.py Glue jobs have a node that connects to S3 bucket for customer and accelerometer landing zones.
+Please see the job scripts at `customer_landing_to_trusted.py` and `accelerometer_landing_to trusted.py 
 
 #### Manually create a Glue Table using Glue Console from JSON data
 
