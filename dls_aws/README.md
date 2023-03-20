@@ -48,8 +48,8 @@ Please see the sql queries `customer_landing_table.sql` and `accelerometer_landi
 
 Screenshot shows a select statement from Athena showing the customer landing data and accelerometer landing data, where the customer landing data has multiple rows where shareWithResearchAsOfDate is blank.
 
-##### customer_landing_table.png
-![customer_landing_table](https://user-images.githubusercontent.com/15125406/224882830-1508bd1c-4961-4a81-abe8-6a1495929d1e.png)
+##### customer_landing_screenshot.png
+![customer_landing_screenshot](https://user-images.githubusercontent.com/15125406/226226506-a7d390dd-24ae-4d26-b8a0-147c1be2d85a.png)
 
 ##### accelerometer_landing_table.png
 ![accelerometer_landing_table](https://user-images.githubusercontent.com/15125406/224882864-81e79c09-e56d-414e-8ec2-d131e3687e5c.png)
@@ -73,6 +73,11 @@ I addition, as suggested by reviewers, please observe a new screenshot from `cus
 
 ##### Screenshot with customer_trusted_table queried: 
 ![image](https://user-images.githubusercontent.com/15125406/225041162-859e797f-3e69-4ca7-bde5-8627e53fd73c.png)
+
+A screenshot that shows a select * statement from Athena showing the customer curated data, where the resulting customer trusted data has no rows where shareWithResearchAsOfDate is blank.
+
+##### Screenshot with customer_curated_screenshot queried to show only trusted data: 
+![customer_curated_screenshot](https://user-images.githubusercontent.com/15125406/226226442-9ca64223-ff64-452e-85a5-4f897ddf0f78.png)
 
 #### Join Privacy tables with Glue Jobs
 
