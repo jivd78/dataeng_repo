@@ -14,7 +14,7 @@ Connect Airflow to AWS Redshift Serverless
 
 For this project, you'll be working with two datasets. Here are the s3 links for each:
 
-Log data: ''' s3://udacity-dend/log_data '''
+Log data: `s3://udacity-dend/log_data`
 Song data: s3://udacity-dend/song_data
 Tip: You will want to copy the data to your own bucket.
 Copy S3 Data
