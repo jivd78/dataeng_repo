@@ -31,6 +31,7 @@ Create your own S3 bucket using the AWS Cloudshell (this is just an example - bu
 Copy the data from the udacity bucket to the home cloudshell directory: ```
 
 `aws s3 cp s3://udacity-dend/log-data/ ~/log-data/ --recursive`
+
 `aws s3 cp s3://udacity-dend/song-data/ ~/song-data/ --recursive`
 
 ### Configuring the DAG
@@ -45,3 +46,8 @@ Do not email on retry
 In addition, configure the task dependencies so that after the dependencies are set, the graph view follows the flow shown in the image below.
 
 ![image](https://github.com/jivd78/dataeng_repo/assets/15125406/9f18bd8f-d662-47bb-aa81-e908c8c80c49)
+
+### The Database
+
+
+
