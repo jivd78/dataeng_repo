@@ -47,6 +47,22 @@ In addition, configure the task dependencies so that after the dependencies are 
 
 ![image](https://github.com/jivd78/dataeng_repo/assets/15125406/9f18bd8f-d662-47bb-aa81-e908c8c80c49)
 
+### Project Structure
+
+```
+airflow_aws
+|_ dags
+|     |_ song_db_dag_jivd.py 
+|_ plugins
+|     |_customOperators
+|     |       |_data_quality.py
+|     |       |_load_dimensions.py
+|     |       |_load_fact.py
+|     |       |_stage_redshift.py
+|     |_helpers
+|             |_sql_statements_song_db.py
+```
+
 ## The Database
 
 ![image](https://github.com/jivd78/dataeng_repo/assets/15125406/1cbd3ede-c00a-4993-9a38-bcdb205a849e)
