@@ -49,5 +49,7 @@ In addition, configure the task dependencies so that after the dependencies are 
 
 ## The Database
 
+![image](https://github.com/jivd78/dataeng_repo/assets/15125406/1cbd3ede-c00a-4993-9a38-bcdb205a849e)
+
 
 
