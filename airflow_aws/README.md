@@ -55,12 +55,13 @@ airflow_aws
 |     |_ song_db_dag_jivd.py 
 |_ plugins
 |     |_customOperators
-|     |       |_data_quality.py
-|     |       |_load_dimensions.py
-|     |       |_load_fact.py
-|     |       |_stage_redshift.py
+|     |        |_data_quality.py
+|     |        |_load_dimensions.py
+|     |        |_load_fact.py
+|     |        |_stage_redshift.py
 |     |_helpers
-|             |_sql_statements_song_db.py
+|              |_sql_statements_song_db.py
+|_README.md
 ```
 
 ## The Database
