@@ -20,11 +20,13 @@ default_args = {
     'description': 'A dag to process song data events with Airflow and Redshift',
     'owner': 'jivd',
     'start_date':pendulum.datetime(2018, 11, 2, 0, 0, 0, 0),
-    'end_date':pendulum.datetime(2018, 11, 3, 0, 0, 0, 0),
+    #'end_date':pendulum.datetime(2018, 11, 3, 0, 0, 0, 0),
     'schedule_interval': timedelta(minutes=5),
     'max_active_runs': 1,
-    'provide_context' : True,
-    'catchup' : True
+    #'provide_context' : True,
+    'catchup' : False,
+    'email_on_retry': False,
+    'retries': 3
 }
 
 @dag(default_args= default_args)
